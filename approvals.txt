@@ -10,11 +10,11 @@ yes    Halley Fritze
 yes    Daniel Goldstein
 yes    Gregor Gorjanc
 yes    Graham Gower
-no    Simon Gravel
+yes    Simon Gravel
 yes    Jeremy Guez
 yes    Benjamin C. Haller
-no    Andrew D. Kern
-no    Lloyd Kirk
+yes    Andrew D. Kern
+yes    Lloyd Kirk
 no    Ivan Krukov
 yes    Hanbin Lee
 yes    Brieuc Lehmann
@@ -39,7 +39,7 @@ yes    Ariella Gladstein
 yes    Bing Guo
 yes    Savita Karthikeyan
 yes    Warren W Kretzschumar
-no    Inés Rebollo
+yes    Inés Rebollo
 yes    Kumar Saunack
 yes    Ruhollah Shemirani
 yes    Alexis Simon
