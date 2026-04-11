@@ -205,7 +205,11 @@ publication according to data from OpenAlex
 
 \input{tools_table.tex}
 
-\subsection*{Overview of tskit's functionality}
+\subsection*{Tskit functionality and benchmarks}
+In this section we provide an overview of tskit's functionality,
+how this overlaps with adjacent libraries, and summarise
+performance benchmarks performed in previous publications.
+
 To give a sense of the breadth of functionality provided by tskit,
 Table S2 lists properties and operations provided by tskit
 broken into broad categories.
@@ -224,7 +228,43 @@ comparable feature.
 The list is illustrative rather than exhaustive and reflects
 library state at the time of writing.
 
+Tskit is the result of more than a decade of sustained development,
+and the algorithmic advances it represents have been described and benchmarked in
+a series of publications. The succinct tree sequence data format
+and the core algorithms for sequential tree construction
+were first introduced as part of the msprime coalescent
+simulator in \citesupp{kelleher2016efficient}. [Mention the
+theoretical algorithmic results.] This paper demonstrated
+the efficiency of the approach in a benchmark that illustrated
+that using the succinct tree sequence format and efficient
+tree iteration was more than a million times faster than accessing
+the trees individually using Newick and the currently available
+libraries in a simulation with 100,000 individuals.
+
+The data model was generalised to enable forwards-time simulations
+in \citesupp{kelleher2018efficient}, and the columnar tables API.
+The tskit library itself was first introduced here. The critical
+``simplify'' method was described in detail and the time and space
+complexity analysed rigorously. This function is the core method
+required for forwards-time ARG simulations, and
+is now used in varied applications~\citesupp{haller2018tree}.
+
+The genealogical nearest neighbourhs (GNN) statisic was introduced
+in~\citesupp{kelleher2019inferring}.
+
+The general API for computing population genetics statistics
+was introduced in~\citesupp{ralph2020efficiently}, which also introduced
+the concept of ``branch based statistics''. Along with a rigorous
+theoretical analysis, benchmarks against existing libraries showed
+that tskit's implementation was up to 100,000 times faster.
+
+[Summarise also: \citesupp{fritze2026forest}, \citesupp{lehmann2026on}
+and \citesupp{lee2026genetic}. Although Lee et al 2026 doesn't describe
+updates to tskit itself (I think) it has benchmarks of the GRM
+against argneedle-lib.]
+
 \input{functionality_table.tex}
+
 
 \bibliographystylesupp{naturemag}
 \bibliographysupp{paper}
