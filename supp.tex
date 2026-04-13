@@ -118,17 +118,17 @@ individual in an ARG can represent.
 operation, a new primitive for extracting local-ancestry tracts
 from an ARG.
 
+[TODO this paragraph needs heavy revision, it's quite weak.]
 A further class of operation became possible once the core
 traversal orders were exposed to Numba~\citep{lam2015numba},
 allowing Python-level user code to JIT-compile ARG traversals at
-close to C speed. Building on this, \citet{tagami2024tstrait}
-introduced edge-wise effect-size dropping as a primitive for
-quantitative-trait simulation on ARGs, and
-\citet{karthikeyan2025tsbrowse} introduced on-the-fly
-quality-control and summary operations for interactive inspection
-of large tree sequences. \citet{fritze2026forest} introduced a
-class of haplotype-level queries that operate directly on the edge
-table rather than tree by tree, and \citet{lehmann2026on}
+close to C speed. This enabled downstream packages
+like tstrait~\citep{tagami2024tstrait}
+and tsbrowse~\citep{karthikeyan2025tsbrowse} to perform large-scale
+computations using only Python code.
+\citet{fritze2026forest} added the
+``extend\_haplotypes'' function to tskit.
+\citet{lehmann2026on}
 introduced the operation of computing genetic relatedness matrices
 (GRMs) directly from an ARG. \citet{lee2026genetic} apply this
 last operation to genomic prediction and provide the one recent
