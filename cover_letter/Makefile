@@ -1,3 +1,8 @@
+all: response_letter.pdf cover_letter.pdf
+
+response_letter.pdf: response_letter.tex
+	pdflatex response_letter.tex
+
 cover_letter.pdf: cover_letter.tex
 	pdflatex cover_letter.tex
 	# bibtex cover_letter
