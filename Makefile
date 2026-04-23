@@ -1,6 +1,6 @@
 FIGURES=figure.pdf
 
-all: paper.pdf supp.pdf
+all: paper.pdf supp.pdf review-diff.pdf
 
 paper.pdf: paper.tex authors.tex paper.bib ${FIGURES}
 	pdflatex paper.tex
@@ -19,6 +19,16 @@ arxiv-submission.tar.gz:
 	mkdir arxiv-submission
 	cp paper.tex supp.tex authors.tex tools_table.tex functionality_table.tex naturemag.bst paper.bib figure.pdf ./arxiv-submission/
 	tar -zcvf arxiv-submission.tar.gz arxiv-submission
+
+review-diff.tex: paper.tex
+	latexdiff reviewed-paper.tex paper.tex > review-diff.tex
+
+review-diff.pdf: review-diff.tex
+	pdflatex review-diff.tex
+	pdflatex review-diff.tex
+	bibtex review-diff
+	pdflatex review-diff.tex
+
 
 paper.ps: paper.dvi
 	dvips paper
