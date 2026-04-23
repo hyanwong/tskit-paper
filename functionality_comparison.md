@@ -273,9 +273,9 @@ The mutations/genotypes are covered by the next topics.
 - **ARGneedle-lib (blank):** There is no notion of allelic state;
   only "lack of mutation" or "mutation".
 
-- **matUtils/BTE (blank):** Allows arbitrary data associated with mutations.
+- **matUtils/BTE (✓):** Allows arbitrary data associated with mutations.
 
-- **DendroPy (blank):** Sophisticated models of character states.
+- **DendroPy (✓):** Sophisticated models of character states.
 
 ---
 
