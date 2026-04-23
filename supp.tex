@@ -56,6 +56,8 @@ publication according to data from OpenAlex
 
 \subsection*{Tskit functionality and benchmarks}
 
+In this section we review tskit's features and some available benchmarks
+that compare it to other approaches.
 Tskit is the result of more than a decade of sustained development,
 and its distinctive contribution is to combine a general-purpose ARG
 representation with efficient primitive operations for traversal,
@@ -69,14 +71,14 @@ The key algorithmic result is that
 the cost of iterating over the local trees along the genome scales
 with the number of trees and the edge differences between neighbouring
 trees, rather than with the sample size.
-The practical consequence was demonstrated in a benchmark where using
-the succinct tree sequence format and sequential iteration was more
+The practical consequence was demonstrated in a benchmark in~\citet{kelleher2016efficient} 
+which showed that using the succinct tree sequence format and sequential iteration was more
 than a million times faster than reading the same trees individually
 from Newick using the standard libraries available at the time, for a
 simulation of 100,000 samples, with storage requirements reduced by
 roughly four orders of magnitude.
 The data model was subsequently generalised to enable forwards-time
-simulation~\citep{kelleher2018efficient}. This publication also
+simulation in~\citet{kelleher2018efficient}. This publication also
 introduced the columnar tables API and was the first paper in which
 the tskit library itself appeared as a distinct component.
 That work introduced the ``simplify'' operation, which restricts an ARG
@@ -114,19 +116,16 @@ tskit, which restores unary-node spans lost to simplification or
 inference and roughly halves the number of edges in typical ARGs, with
 corresponding reductions in statistic-computation time; and
 \citet{lehmann2026on} introduced the operation of computing genetic
-relatedness matrices (GRMs) directly from an ARG.
-For one million diploids on human chromosome~21, the branch
+relatedness matrices (GRMs) and GRM-vector products directly from an ARG.
+As described in \citet{lehmann2026on},
+for one million diploids on human chromosome~21, the 
 GRM--vector product completes in under 18~seconds, and the associated
-randomised PCA scales to $2^{20}$ samples where genotype-matrix PCA
-runs out of memory.
-\citet{lee2026genetic} apply this last operation to fitting linear
-mixed models and provide the one recent head-to-head benchmark of
-tskit against another library, comparing the ARG-based GRM with the
-corresponding implementation in
-ARGneedle-lib~\citep{zhang2023biobank}, and reporting that tskit is
-one to two orders of magnitude faster for GRM--vector products across
-a wide range of mutation rates, while using an exact algorithm that
-avoids Monte-Carlo approximation.
+randomised PCA scales to $2^{20}$ samples, a scale at which genotype-matrix PCA
+would run out of memory on most machines.
+\citet{lee2026genetic} apply this last operation to fitting linear mixed models,
+and compare the GRM-vector prodcut to the corresponding approximate (Monte Carlo)
+implementation in ARGneedle-lib~\citep{zhang2023biobank}, showing that tskit is
+one to two orders of magnitude faster despite using an exact algorithm.
 
 A second defining feature of tskit is composability across different
 stages of analysis.
@@ -145,10 +144,10 @@ selection models~\citep{haller2025simHumanity}.
 ages of ancestral nodes from an inferred ARG under a mutational-clock
 prior, and used it to combine 3{,}601 modern and eight high-coverage
 ancient human genomes into a single unified genealogy.
-Alongside these core additions, the exposure of tskit's traversal
-orders to Numba~\citep{lam2015numba} has allowed Python-level user
-code to JIT-compile ARG traversals at close to C speed, enabling
-downstream packages such as
+Alongside these core additions, tskit's exposure to Numba~\citep{lam2015numba} 
+of vectors allowing structured tree traversal
+has allowed Python-level user code to JIT-compile ARG traversals at close to C speed,
+enabling downstream packages such as
 tstrait~\citep{tagami2024tstrait} and
 tsbrowse~\citep{karthikeyan2025tsbrowse}
 to perform biobank-scale computations in pure Python.
@@ -190,6 +189,9 @@ suite of tree operations.
 Together, these comparisons illustrate both the breadth of general
 operations supported by tskit and the distinctive features that arise
 from its underlying ARG data model.
+It is important to note that all these libraries have different goals than tskit, and
+we are comparing their functionality in terms of the core ARG operations implemented by tskit,
+rather than the main use cases addressed by the authors of these libraries.
 
 Table S2 lists properties and operations that tskit supports, grouped
 into nine broad categories.
@@ -210,15 +212,18 @@ Our comparison is intended to assess reusable, documented library
 functionality rather than undocumented internal implementation
 details.
 Although ARGneedle-lib and matUtils are implemented in C++, neither
-provides a documented low-level API intended for downstream reuse, and
+provides a documented low-level API clearly intended for downstream reuse, and
 we therefore score only functionality exposed through their Python
 interfaces (for matUtils, via BTE).
 Thus, underlying code may implement additional capabilities that are
 not counted here if they are not available as documented, reusable
 library operations.
+For instance, ARGneedle-lib uses efficient tree iteration
+to rapidly compute a GRM-vector product
+using algorithms roughly analogous to tskit's \citep[described in][]{zhu2024fastvariancecomponent};
+however, the tree iteration is only available in C++.
 The comparisons were performed using tskit version 1.0.2,
-arg-needle-lib version 1.2.1, BTE version 0.9.3, and DendroPy version
-5.0.8.
+arg-needle-lib version 1.2.1, BTE version 0.9.3, and DendroPy version 5.0.8.
 
 \clearpage
 \input{functionality_table.tex}
