@@ -110,20 +110,20 @@ model by \citet{andersontrocme2023genes}, extending what a node or
 individual in an ARG can represent.
 \citet{tsambos2023link} introduced the ``link\_ancestors'' operation,
 a new primitive for extracting local-ancestry tracts from an ARG.
-Development of the core API has continued through 2024--2026:
+Development of the core API has continued through 2024--2026.
 \citet{fritze2026forest} added the ``extend\_haplotypes'' function to
 tskit, which restores unary-node spans lost to simplification or
 inference and roughly halves the number of edges in typical ARGs, with
-corresponding reductions in statistic-computation time; and
-\citet{lehmann2026on} introduced the operation of computing genetic
-relatedness matrices (GRMs) and GRM-vector products directly from an ARG.
-As described in \citet{lehmann2026on},
-for one million diploids on human chromosome~21, the 
-GRM--vector product completes in under 18~seconds, and the associated
+corresponding reductions in statistic-computation time. \citet{lehmann2026on} 
+introduced operations to calculate `branch' genetic relatedness matrices 
+(GRMs), which encode pairwise relatedness via shared branch area in an ARG, and their 
+vector products directly from the ARG. As described in \citet{lehmann2026on},
+for one million simulated diploids on human chromosome~21, the 
+branch GRM--vector product completes in under 18~seconds, and the associated
 randomised PCA scales to $2^{20}$ samples, a scale at which genotype-matrix PCA
 would run out of memory on most machines.
 \citet{lee2026genetic} apply this last operation to fitting linear mixed models,
-and compare the GRM-vector prodcut to the corresponding approximate (Monte Carlo)
+and compare the branch GRM-vector prodcut to the corresponding approximate (Monte Carlo)
 implementation in ARGneedle-lib~\citep{zhang2023biobank}, showing that tskit is
 one to two orders of magnitude faster despite using an exact algorithm.
 
