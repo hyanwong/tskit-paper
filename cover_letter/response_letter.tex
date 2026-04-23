@@ -1,0 +1,205 @@
+\documentclass{letter}
+
+% \usepackage[superscript,biblabel]{cite}
+% \bibliographystyle{naturemag}
+
+\signature{Jerome Kelleher}
+
+\address{Big Data Institute\\University of Oxford\\UK}
+\begin{document}
+
+\begin{letter}{Nature Methods}
+
+\opening{Dear Dr Korda,}
+
+We thank you and the reviewers for the careful and constructive evaluation of
+our Correspondence, ``Population-scale Ancestral Recombination Graphs with
+tskit 1.0.'' We are grateful for the positive overall assessment and for the
+specific suggestions, which have helped us improve the manuscript.
+
+In response, we have revised both the main text and the Supplementary
+Information. In particular, we have clarified the significance of the tskit 1.0
+release, clarified how the present paper differs from our earlier publications,
+added a new supplementary section (``Tskit functionality and benchmarks'')
+together with Table S2, and added a brief statement in the main text on likely
+future development directions.
+
+We have included a copy of the manuscript in which all changes have been
+highlighted.
+
+Below we respond point by point.
+
+\medskip
+\hrule
+\medskip
+
+\noindent \textbf{Response to the editor}
+
+We are grateful for the editors’ constructive assessments
+and have revised the manuscript accordingly.
+
+\noindent \textbf{Editorial request:} ``Clarification of the significance of the tskit 1.0 release.''
+
+We have revised the main text so that it now explicitly states that
+the paper ``marks the release of tskit 1.0,'' which ``formalises long-term
+stability guarantees for its data formats and APIs.'' This is intended to make
+clear that the significance of version 1.0 is the stabilisation of a mature
+software platform for ARG analysis.
+
+\noindent \textbf{Editorial request:} ``Contextualisation of the work with that
+of others and your own prior work to clarify the advance made in the tskit
+software.''
+
+We have strengthened this in both the main text and the Supplementary
+Information. In the main text, we now explicitly state that, ``Building on the
+initial introduction of the succinct tree sequence data model and its
+formalisation as a general ARG representation, tskit 1.0 marks the maturity
+of the software library and data model for scalable ARG analysis (see
+Supplementary Information).'' The new supplementary section then provides the
+fuller developmental arc from the original tree sequence work, through
+a series of publications developing core operations, to the present 1.0 release.
+
+\noindent \textbf{Editorial request:} ``Discussion comparing tskit to related
+work with respect to functionality, efficiency, or scalability.''
+
+To address this, we added the new supplementary section ``Tskit functionality
+and benchmarks'' and Table S2. This material summarises the fundamental
+algorithmic advances behind tskit's scalability, reviews published benchmarks, and
+compares tskit with related libraries in terms of documented reusable
+functionality.
+
+\noindent \textbf{Editorial request:} ``Discussion of future directions.''
+
+Given the word limit of the Correspondence format, we
+addressed this concisely in the main text by adding the sentence: ``As tskit is
+applied to a wider range of biological applications, future development is
+likely to address additional complexities such as supporting multiple
+chromosomes and structural variants.''
+
+\medskip
+\hrule
+\medskip
+
+\noindent \textbf{Response to Reviewer \#1}
+
+\noindent \textbf{Reviewer \#1:} ``We strongly support the publication of this
+announcement.''
+
+We thank Reviewer 1 for this very supportive assessment, and especially for
+taking the time to test the software directly. We are grateful for
+the reviewer's recognition of tskit as enabling infrastructure for the field.
+
+Reviewer 1 did not request any specific changes.
+
+\medskip
+\hrule
+\medskip
+
+\noindent \textbf{Response to Reviewer \#2}
+
+We thank Reviewer 2 for the positive and thoughtful review, and for
+highlighting the broad impact of tskit across simulation, inference, and
+downstream population-genetic analysis. We are grateful for the reviewer’s
+helpful suggestions regarding the significance of the 1.0 release and future
+directions.
+
+\noindent \textbf{Reviewer \#2:} ``Perhaps one comment is that the
+correspondence could more clearly state the significance of the 1.0 release
+(i.e., why this milestone is reached now).''
+
+We have revised the manuscript so that the main text now explicitly
+states that tskit 1.0 ``formalises long-term stability guarantees for its data
+formats and APIs.'' The new supplementary section further explains that this
+release marks the point at which a decade of development in representation,
+algorithms, and reusable operations has been consolidated into a stable
+software library.
+
+\noindent \textbf{Reviewer \#2:} ``Also, it would be a valuable opportunity to
+outline any future directions, and some perspective on how the tskit community
+may evolve.''
+
+Because of the strict word limit, we have addressed this concisely in
+the main text by adding a sentence indicating likely future development
+directions as tskit is applied to a broader range of biological applications.
+
+\medskip
+\hrule
+\medskip
+
+\noindent \textbf{Response to Reviewer \#3}
+
+We thank Reviewer 3 for the careful and constructive review, and for
+recognising the importance of software infrastructure for ARG-based methods. We
+are grateful for the reviewer’s suggestions, which helped us clarify the
+relationship to our earlier papers, better summarise the basis of tskit’s
+scalability, and provide a more explicit comparison to related software.
+
+\noindent \textbf{Reviewer \#3, comment 1:} ``The paper would benefit from
+describing more clearly what is new in the present paper relative to the
+original 2016 paper on an earlier version of tskit and a recent 2024 paper
+describing the methodology. Is there anything fundamentally new beyond these
+other publications? What does publishing this particular manuscript accomplish
+that the 2024 paper did not? I do not think that needs to be explained in the
+manuscript itself but might be better explained in a cover letter or response
+to reviewers.''
+
+We agree that this distinction needed to be made clearer. We have therefore
+revised both the main text and the Supplementary Information to make the
+developmental arc explicit. In brief, the 2016 paper introduced the succinct
+tree sequence data model, the 2024 paper established it as a general
+representation of ARGs, and the present Correspondence marks the maturity of
+the software library itself as a stable platform for scalable ARG analysis. The
+purpose of the present paper is therefore different from that of the earlier
+methodological papers: it provides a concise and citable account of the mature
+software platform, its stability guarantees, and the broad downstream ecosystem
+that has formed around it.
+
+\noindent \textbf{Reviewer \#3, comment 2:} ``Related to the prior point, it
+would be helpful to have at least a summary of what makes this package
+particularly effective for large-scale ARGs. Are there new innovations in
+algorithms or data structures, for example? Or is it just better software
+engineering?''
+
+We have addressed this in the new supplementary section, which now
+summarises the key algorithmic advances underlying
+scalability, including the succinct tree sequence encoding, sequential tree
+iteration, simplify, and later core operations for statistics, ancestry, and
+relatedness. The section also points to published benchmarks demonstrating
+major gains in speed and memory efficiency in several settings.
+
+\noindent \textbf{Reviewer \#3, comment 3:} ``Related to the prior point, it
+would be helpful to see more detail on comparison to related work, even if just
+in the supplement, to back up the claims of superiority of tskit to
+alternatives in the literature with respect to functionality, efficiency, or
+scalability.''
+
+We agree, and this was a major motivation for the new supplementary material.
+We added the section ``Tskit functionality and benchmarks'' and Table S2, which
+compare tskit with ARGneedle-lib, BTE/matUtils, and DendroPy across data model
+features, file formats, metadata/provenance, tree operations, editing
+operations, statistics, ancestry/relatedness, mutations/variants, and
+visualisation. The accompanying text also explains the scoring methodology and
+clarifies that the comparison is based on documented, reusable functionality
+exposed through the Python APIs.
+
+\medskip
+\hrule
+\medskip
+
+We hope that the revised manuscript and Supplementary Information
+satisfactorily address the editor's and reviewers' concerns. We are grateful
+for the opportunity to revise the paper, and we believe the changes have
+significantly improved the clarity and positioning of the manuscript.
+
+The revised main text is now slightly over the word limit.
+Given the positive overall assessment,
+we were unsure what could most appropriately be cut
+without weakening the manuscript. If the general direction and substance of these
+revisions are viewed favourably, we would be very happy to shorten the text
+further with editorial guidance on where compression would be most helpful.
+
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
