@@ -148,11 +148,14 @@ efficient, well-tested, and thoroughly documented primitive operations on ARGs, 
 than to directly implement end-user workflows.
 This design principle has enabled a broad ecosystem of downstream
 software---spanning simulation, ARG inference, population and statistical genetic
-inference, analysis, and visualisation---with 62 published tools now using tskit
+inference, analysis, and visualisation---with 63 published tools now using tskit
 as a core dependency (Table S1).
-With the release of tskit 1.0, long-term stability of the data model
-and APIs is explicitly guaranteed, reflecting a commitment to maintain this
-minimal and composable core as the project evolves. By focusing on stable
+Building on the initial introduction of the succinct tree sequence
+data model~\cite{kelleher2016efficient,kelleher2018efficient}
+and its formalisation as a general ARG represention~\cite{wong2024general},
+the 1.0 release marks the maturity of tskit as a stable software library
+and data model for scalable ARG analysis (see Supplementary Information).
+By focusing on stable
 primitives rather than prescribing analytical pipelines, tskit enables
 methodological innovation to concentrate on modelling, inference, and
 interpretation rather than bespoke data formats and tooling. In this way, tskit
