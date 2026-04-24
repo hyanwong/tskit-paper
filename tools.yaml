@@ -3,6 +3,14 @@
 # - inspecting GitHub dependents graph
 # - looking up conda dependents using script conda_lookup.py
 
+- name: PolarBEAR
+  repo: https://gitlab.gwdg.de/molsysevol/polarizing_without_outgroup
+  interface: Python
+  type: analysis
+  publication: https://doi.org/10.1111/1755-0998.70105
+  notes: PolarBEAR (Polarisation By Estimation of the Ancestral Recombination graph) uses the local genealogies from the ancestral recombination graph (ARG) to infer ancestral states.
+  implementation: Python
+
 - name: Lorax
   repo: https://github.com/pratikkatte/lorax/
   interface: Python
@@ -322,7 +330,7 @@
 - name: TwisstNTern
   repo: https://github.com/HilaLifchitz/TwisstNTern
   publication: https://doi.org/10.32942/X29941
-  type: simulation
+  type: analysis
   interface: Python
   notes: Not primarly simulator, but includes a frontend for running msprime simulations.
   package: guix
